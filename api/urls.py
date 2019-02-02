@@ -5,4 +5,5 @@ app_name='api'
 
 urlpatterns = [
     url(r'^auth$', drf_views.obtain_auth_token, name='auth'),
+    url(r'^test$', drf_views.obtain_auth_token, name='auth'),
 ]

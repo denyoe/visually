@@ -16,8 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from rest_framework import routers
+
+# from polls import api_views
+
+router = routers.DefaultRouter()
+# router.register(r'candidate', api_views.CandidateViewSet)
+# router.register(r'questions', api_views.QuestionViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'^', include('api.urls', namespace='api')),
+    # path('admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
+    url(r'^api/', include('api.urls', namespace='api')),
+    url(r'^api/', include(router.urls)),
+    url(r'^api/', include('rest_framework.urls', namespace='rest_framework')),
 ]

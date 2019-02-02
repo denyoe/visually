@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    # 'media_manager',
+    'media_manager',
+    # 'text_mining'
     'api',
 ]
 
