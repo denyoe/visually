@@ -1,10 +1,16 @@
 from rest_framework.response import Response
 from rest_framework import viewsets
 
-from . models import Media, Text
-# from .serializers import QuestionSerializer, ChoiceSerializer
-# from .api_authentication import AdminOnlyAuth
+from . models import *
+from . serializers import *
 
+class CandidateViewSet(viewsets.ModelViewSet):
+	queryset = Candidate.objects.all()
+	serializer_class = CandidateSerializer
+
+class QuestionViewSet(viewsets.ModelViewSet):
+	queryset = Question.objects.all()
+	serializer_class = QuestionSerializer
 
 # class QuestionViewSet(viewsets.ModelViewSet):
 #     authentication_classes = (AdminOnlyAuth,)

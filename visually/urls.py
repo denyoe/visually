@@ -18,16 +18,18 @@ from django.urls import path
 from django.conf.urls import url, include
 from rest_framework import routers
 
-# from polls import api_views
+# from media_manager.admin import admin_site
+from media_manager import api_views
 
 router = routers.DefaultRouter()
-# router.register(r'candidate', api_views.CandidateViewSet)
-# router.register(r'questions', api_views.QuestionViewSet)
+
+router.register(r'candidate', api_views.CandidateViewSet)
+router.register(r'questions', api_views.QuestionViewSet)
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include('api.urls', namespace='api')),
+    # url(r'^api/', include('api.urls', namespace='api')),
     url(r'^api/', include(router.urls)),
     url(r'^api/', include('rest_framework.urls', namespace='rest_framework')),
 ]
