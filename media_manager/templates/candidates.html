@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<ul>
+		{% for candidate in candidates %}
+			<li>
+				<a href="{% url 'candidate' candidate.id %}">
+					{{ candidate.name | capfirst }}
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+{% endblock content %}

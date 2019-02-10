@@ -38,6 +38,13 @@ class CandidateSerializer(serializers.ModelSerializer):
 		model = Candidate
 		fields = ('name', 'email', 'text_set')
 
+# class ProfileSerializer(serializers.ModelSerializer):
+# 	# text_set = AnswerTextSerializer(many=True, read_only=True)
+
+# 	class Meta:
+# 		model = Candidate
+# 		fields = ('output')
+
 # class ChoiceSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = Choice
