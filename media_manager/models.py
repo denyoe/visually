@@ -43,6 +43,7 @@ class Score(models.Model):
 	candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
 	question = models.ForeignKey(Question, on_delete=models.CASCADE)
 	similarity_score = models.FloatField(null = True, blank = True, default = None)
+	entities = models.TextField(null = True, blank = True, default = None)
 
 	def __str__(self):
 		return "[{}] scored {} on {}".format(self.candidate.email, self.similarity_score, self.question.text)
@@ -55,6 +56,7 @@ class Text(models.Model):
 
 	media 		= models.ForeignKey(Media, on_delete=models.CASCADE)
 	candidate 	= models.ForeignKey(Candidate, on_delete=models.CASCADE)
+	question 	= models.ForeignKey(Question, on_delete=models.CASCADE, related_name='Text')
 	score 		= models.ForeignKey(Score, on_delete=models.CASCADE, null = True, blank = True, default = None)
 	text 		= models.TextField()
 
