@@ -2,7 +2,7 @@
 
 Python REST API (built with the [*Django Rest Framework*](https://www.django-rest-framework.org))
 
-*Pre-requisites: pip | nltk data*
+*Pre-requisites: pip*
 
 ---
 
@@ -17,6 +17,9 @@ Python REST API (built with the [*Django Rest Framework*](https://www.django-res
 The server should now be running on port 8000.
 
 To run the server on a different port, use: `python manage.py runserver 8080`
+
+##### Install spaCy Models
+Run `python -m spacy download en` or `python -m spacy download en_core_web_lg`
 
 ##### Configure Database
 
@@ -39,3 +42,13 @@ Run: `pipenv install <package name>` i.e `pipenv install flask==0.12.1` or `pipe
 ##### Misc
 
 1. Create migrations from model `python manage.py makemigrations media_manager`
+
+
+##### MACOS mysqlclient Installation Error
+
+ <!-- # in .zshrc (or .bashrc) -->
+`export PATH="/usr/local/opt/openssl/bin:$PATH"`
+
+<!-- # in terminal -->
+`export LDFLAGS="-L/usr/local/opt/openssl/lib"`
+`export CPPFLAGS="-I/usr/local/opt/openssl/include"`
