@@ -18,6 +18,8 @@ from django.urls import path
 from django.conf.urls import url, include
 from rest_framework import routers
 
+from media_manager import views
+
 # from media_manager.admin import admin_site
 from media_manager import api_views
 
@@ -26,8 +28,15 @@ router = routers.DefaultRouter()
 router.register(r'candidate', api_views.CandidateViewSet)
 router.register(r'questions', api_views.QuestionViewSet)
 
+# router.register('candidate/profile', api_views.ProfileViewSet, base_name='profile')
+
+
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+    url(r'^$', views.index, name='index'),
+    url(r'^candidates$', views.candidates, name='candidates'),
+    url(r'^candidates/(\d+)/$', views.candidate, name='candidate'),
+    url(r'^candidates/(\d+)/profile/(\d+)/$', views.profile, name='profile'),
+
     url(r'^admin/', admin.site.urls),
     # url(r'^api/', include('api.urls', namespace='api')),
     url(r'^api/', include(router.urls)),
