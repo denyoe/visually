@@ -28,7 +28,7 @@ body {
 .c {
     grid-area: c;
     text-align: center;
-    width: 500px;
+    /*width: 500px;*/
 }
 
 .d {

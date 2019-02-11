@@ -29,10 +29,8 @@ class Media(models.Model):
 
 	title 			= models.CharField(max_length=255)
 	original_url	= models.CharField(max_length=255)
-	internal_url	= models.CharField(max_length=255)
 	m_format		= models.CharField(max_length=20)
 	created_at		= models.DateTimeField(auto_now_add=True)
-	# candidate		= models.EmailField(max_length=255)
 	candidate		= models.ForeignKey(Candidate, on_delete=models.CASCADE)
 	question		= models.ForeignKey(Question, on_delete=models.CASCADE)
 
@@ -54,13 +52,13 @@ class Text(models.Model):
 		verbose_name = _("AnswerText")
 		verbose_name_plural = _("AnswerText")
 
-	media 		= models.ForeignKey(Media, on_delete=models.CASCADE)
+	media 		= models.ForeignKey(Media, on_delete=models.SET_NULL, null = True, blank = True, default = None)
 	candidate 	= models.ForeignKey(Candidate, on_delete=models.CASCADE)
 	question 	= models.ForeignKey(Question, on_delete=models.CASCADE, related_name='Text')
-	score 		= models.ForeignKey(Score, on_delete=models.CASCADE, null = True, blank = True, default = None)
+	score 		= models.ForeignKey(Score, on_delete=models.SET_NULL, null = True, blank = True, default = None)
 	text 		= models.TextField()
 
 	def __str__(self):
-		return "Answer ({}) by {} [{}]".format(self.media.title, self.candidate.name, self.candidate.email)
+		return "{} [{}] - Answer to - {} ".format(self.candidate.name, self.candidate.email, self.question.text)
 
 

@@ -39,7 +39,6 @@ def profile(request, candidate_id, question_id):
 		score = Score.objects.get(question_id=question_id, candidate_id=candidate_id)
 	except Exception as e:
 		score = None
-		return render(request, 'error.html', {})
 
 	entities = utils.entities(answer.text)
 
