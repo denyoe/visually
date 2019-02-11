@@ -12,8 +12,12 @@ def index(request):
 
 def candidates(request):
 	candidates = Candidate.objects.all()
-	context = { 'candidates': candidates }
-	return render(request, 'candidates.html', context)
+	questions = Question.objects.all()
+
+	return render(request, 'candidates.html', {
+		'candidates':	candidates,
+		'questions':	questions
+	})
 
 def candidate(request, id):
 	candidate = Candidate.objects.get(id=id)
@@ -29,11 +33,13 @@ def profile(request, candidate_id, question_id):
 		answer = Text.objects.get(question_id=question_id, candidate_id=candidate_id)
 	except Exception as e:
 		answer = None
+		return render(request, 'error.html', {})
 	
 	try:
 		score = Score.objects.get(question_id=question_id, candidate_id=candidate_id)
 	except Exception as e:
 		score = None
+		return render(request, 'error.html', {})
 
 	entities = utils.entities(answer.text)
 

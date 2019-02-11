@@ -32,7 +32,7 @@ router.register(r'questions', api_views.QuestionViewSet)
 
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.candidates, name='index'),
     url(r'^candidates$', views.candidates, name='candidates'),
     url(r'^candidates/(\d+)/$', views.candidate, name='candidate'),
     url(r'^candidates/(\d+)/profile/(\d+)/$', views.profile, name='profile'),

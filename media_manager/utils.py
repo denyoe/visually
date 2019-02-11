@@ -3,8 +3,8 @@ from __future__ import print_function
 import spacy
 from spacy import displacy
 
-nlp = spacy.load('en_core_web_lg')
-# nlp = spacy.load('en')
+# nlp = spacy.load('en_core_web_lg')
+nlp = spacy.load('en')
 
 # sementic similarity
 def compare(answer, target):
